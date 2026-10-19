@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پڕۆفایلی تایبەت و درەوشاوە</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+
+        body {
+            background: #080710;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* توخمی درەوشاوەی جوڵاوی باکگراوند */
+        .background-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.6;
+            animation: float 8s infinite alternate ease-in-out;
+            z-index: 1;
+        }
+
+        .glow-1 {
+            background: #7928ca;
+            top: -10%;
+            right: 15%;
+        }
+
+        .glow-2 {
+            background: #ff0080;
+            bottom: -10%;
+            left: 15%;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 40px) scale(1.15); }
+        }
+
+        .glass-card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 580px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        /* شریتی درەوشاوەی جوڵاو لەسەر کاردەکە */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 6s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 35px;
+        }
+
+        .social-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .social-item i {
+            font-size: 1.4rem;
+            transition: transform 0.4s ease;
+        }
+
+        .social-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-item:hover i {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        .fb:hover { background: linear-gradient(135deg, #1877f2, #0d47a1); }
+        .insta:hover { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+        .snap:hover { background: linear-gradient(135deg, #fffc00, #f0a500); color: #000; }
+        .tiktok:hover { background: linear-gradient(135deg, #00f2fe, #4facfe, #000); }
+
+        .poem-wrapper {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, rgba(255, 0, 128, 0.2), rgba(121, 40, 202, 0.2));
+            border: 1px solid rgba(255, 0, 128, 0.4);
+            color: #ff80bf;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(255, 0, 128, 0.2); }
+            100% { box-shadow: 0 0 20px rgba(255, 0, 128, 0.6); }
+        }
+
+        .poet-name {
+            font-size: 1.6rem;
+            background: linear-gradient(90deg, #fff, #d4af37, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .poem-text {
+            color: #e2e8f0;
+            line-height: 2.2;
+            font-size: 1.1rem;
+            text-align: center;
+            white-space: pre-line;
+        }
+
+        .stanza-2 {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            color: #f1f5f9;
+            font-weight: 600;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+
+    <div class="glass-card">
+        <div class="social-grid">
+            <a href="https://www.facebook.com/nasradin.muhamad.7" target="_blank" class="social-item fb">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com/nasradin.23" target="_blank" class="social-item insta">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.snapchat.com/add/naso_shex" target="_blank" class="social-item snap">
+                <i class="fab fa-snapchat-ghost"></i> Snapchat
+            </a>
+            <a href="https://www.tiktok.com/@naso_poet" target="_blank" class="social-item tiktok">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+        </div>
+
+        <div class="poem-wrapper">
+            <span class="badge">نوسەر و شاعیری نەخوێندەوار</span>
+            <h2 class="poet-name">نەسرەدین شێخ محمد</h2>
+
+            <div class="poem-text">
+دەنگم چەکی دروستکردنی گۆڕانکاریە،
+بۆ ئازادی، بۆ داهاتوویەکی ڕوون
+دەنگی دلێر ناترسێت، قەڵەمی بوێر
+هەڵناوەشێتەوە چونکە ڕاستی بە دەنگ ناگوترێت بە تانها، وە نوسینیش بەتنها بەس نیە بۆ گەیاندنی شتانێک کە ساڵانێک مرۆڤ لەناو خۆیدا هەڵی گرتوون و نەیتوانیوە دەریان بڕێت بۆ هیچ کەسێک
+            </div>
+
+            <div class="stanza-2">
+ئەو ڕێگایە هەر چەند ڕێک و راستو پان بێت
+کۆتایەکەی هەر چاڵێکا ..
+
+مرۆڤ هەرچەند سەرکەوتووبێت دەبێت
+بووەستێت لە خاڵێکا ..
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
